@@ -9,8 +9,10 @@
   </div>
   <div style="position: absolute;left:20px;top:20px;" *ngIf="isGameOver()">GAME OVER</div>
   <div style="position: absolute;left:280px;top:20px;">{{score}}</div>
-  <div style="position: absolute;background-color:yellow;width:5px;height:5px;"
-       [style.left.px]="rangeMinX"
-       [style.top.px]="rangeMinY">
+  <div style="position: absolute;background-color:yellow;"
+       [style.left.px]="range.minX"
+       [style.top.px]="range.minY"
+       [style.width.px]="rangeWidth"
+       [style.height.px]="rangeHeight">
   </div>
 </div>
