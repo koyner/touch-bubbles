@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Bubble} from './model/bubble';
 
 class Dist {
@@ -18,10 +18,11 @@ class Dist {
 })
 export class AppComponent implements OnInit {
 
+  private _anim: number;
   private _isGameOver = false;
-  private _idLatest = 0;
+  private _score = 0;
   private _sideMax = 200;
-  private _segments = 20;
+  private _segments = 50;
 
   spaceW = 500;
   spaceH = 500;
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
   dists: Array<Array<Dist>> = [];
   distFurthest: Dist;
 
-  constructor() {
+  constructor(@Inject('Window') private window: Window) {
     for (let j = 0; j < this._segments; j++) {
       const segHeight = this.spaceH / this._segments;
       const minY = j * segHeight;
@@ -49,14 +50,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.createBubble();
-  }
-
-  died(e: Bubble) {
-    console.log('game over', e);
-    this._isGameOver = true;
+    this.gameStart();
   }
 
   killed(e: Bubble) {
+    this._score++;
     this.bubbles.splice(this.bubbles.indexOf(e), 1);
     this.createBubble();
     if (this.score % 10 === 0) {
@@ -69,42 +67,61 @@ export class AppComponent implements OnInit {
   }
 
   get score() {
-    return this._idLatest - 1;
+    return this._score;
+  }
+
+  private gameStart() {
+    this._anim = this.window.setInterval(this.update, 25);
+  }
+
+  private gameEnd() {
+    this.window.clearInterval(this._anim);
+    this._isGameOver = true;
+  }
+
+  private update = () => {
+    this.bubbles.forEach(b => {
+      b.update();
+      if (b.side < 0) {
+        this.gameEnd();
+      }
+    });
+    this.calculateDists();
   }
 
   private createBubble() {
     const side = this._sideMax;
     const x = (side / 2) + Math.floor(Math.random() * (this.spaceW - side));
     const y = (side / 2) + Math.floor(Math.random() * (this.spaceH - side));
-    const bubble = new Bubble(this._idLatest++, x, y, side);
+    const bubble = new Bubble(x, y, side);
     this.bubbles.push(bubble);
-    this.distFurthest = this.calculateDists();
+    this.calculateDists();
   }
 
-  private calculateDists(): Dist {
-    let distItemFurthest = null;
+  private calculateDists() {
+    let distFurthest = null;
     this.dists.forEach(distRow => {
       distRow.forEach(dist => {
-        const pointX = (dist.minX + dist.maxX) / 2;
-        const pointY = (dist.minY + dist.maxY) / 2;
-        const distEdgeX = Math.min(this.spaceW - pointX, pointX);
-        const distEdgeY = Math.min(this.spaceH - pointY, pointY);
+        const distX = (dist.minX + dist.maxX) / 2;
+        const distY = (dist.minY + dist.maxY) / 2;
+        const distEdgeX = Math.min(this.spaceW - distX, distX);
+        const distEdgeY = Math.min(this.spaceH - distY, distY);
         let distBubbleMin = -1;
         this.bubbles.forEach(b => {
-          const distBubbleX = Math.abs(b.x - pointX);
-          const distBubbleY = Math.abs(b.y - pointY);
+          const distBubbleX = Math.abs(b.x - distX);
+          const distBubbleY = Math.abs(b.y - distY);
           const distBubble = Math.max(0, Math.sqrt((distBubbleX * distBubbleX) + (distBubbleY * distBubbleY)) - (b.side / 2));
           if (distBubbleMin === -1 || distBubble < distBubbleMin) {
             distBubbleMin = distBubble;
           }
         });
         dist.dist = Math.min(distBubbleMin, distEdgeY, distEdgeX);
-        if (!distItemFurthest || dist.dist > distItemFurthest.dist) {
-          distItemFurthest = dist;
+        if (!distFurthest || dist.dist > distFurthest.dist) {
+          distFurthest = dist;
         }
       });
     });
-    return distItemFurthest;
+    this.distFurthest = distFurthest;
   }
 
 }

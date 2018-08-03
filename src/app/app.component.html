@@ -4,11 +4,14 @@
        [style.height.px]="spaceH">
   </div>
   <div *ngFor="let bubble of bubbles">
-    <app-bubble [bubble]=bubble [isGameOver]="isGameOver()" (died)="died($event)"
-                (killed)="killed($event)"></app-bubble>
+    <app-bubble
+      [bubble]=bubble
+      [isGameOver]="isGameOver()"
+      (killed)="killed($event)">
+    </app-bubble>
   </div>
-  <div style="position: absolute;left:20px;top:20px;" *ngIf="isGameOver()">GAME OVER</div>
-  <div style="position: absolute;left:280px;top:20px;">{{score}}</div>
+  <div style="position: absolute;left:20px;top:20px;color:white;z-index:2;" *ngIf="isGameOver()">GAME OVER</div>
+  <div style="position: absolute;left:280px;top:20px;color:white;z-index:2;">{{score}}</div>
   <ng-container *ngFor="let distRow of dists">
     <ng-container *ngFor="let dist of distRow">
       <div style="position:absolute;z-index:1;"

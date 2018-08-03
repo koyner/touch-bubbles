@@ -1,9 +1,12 @@
 export class Bubble {
 
-  constructor(public id: number,
-              public x: number,
+  constructor(public x: number,
               public y: number,
               public side: number) {
+  }
+
+  update() {
+    this.side--;
   }
 
 }
