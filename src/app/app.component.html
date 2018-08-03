@@ -1,7 +1,7 @@
 <div style="color:white;position:absolute;left:50px;top:50px;">
   <div style="position:absolute;left:0;top:0;background-color:white;"
-       [style.width.px]="_spaceW"
-       [style.height.px]="_spaceH">
+       [style.width.px]="spaceW"
+       [style.height.px]="spaceH">
   </div>
   <div *ngFor="let bubble of bubbles">
     <app-bubble [bubble]=bubble [isGameOver]="isGameOver()" (died)="died($event)"
@@ -9,10 +9,15 @@
   </div>
   <div style="position: absolute;left:20px;top:20px;" *ngIf="isGameOver()">GAME OVER</div>
   <div style="position: absolute;left:280px;top:20px;">{{score}}</div>
-  <div style="position: absolute;background-color:black;"
-       [style.left.px]="range.minX"
-       [style.top.px]="range.minY"
-       [style.width.px]="rangeWidth"
-       [style.height.px]="rangeHeight">
-  </div>
+  <ng-container *ngFor="let distRow of dists">
+    <ng-container *ngFor="let dist of distRow">
+      <div style="position:absolute;z-index:1;"
+           [style.left.px]="dist.minX"
+           [style.top.px]="dist.minY"
+           [style.width.px]="dist.maxX-dist.minX"
+           [style.height.px]="dist.maxY-dist.minY"
+           [style.background-color]="dist === distFurthest ? 'cyan' : dist.getCol()">
+      </div>
+    </ng-container>
+  </ng-container>
 </div>

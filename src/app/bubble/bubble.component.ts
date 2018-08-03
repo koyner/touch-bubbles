@@ -54,7 +54,7 @@ export class BubbleComponent implements OnInit {
     if (this.isGameOver) {
       this.stop();
     } else {
-      this.side -= 0;
+      this.side -= 1;
       if (this.side <= 0) {
         this.died.emit(this.bubble);
         this.stop();

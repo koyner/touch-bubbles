@@ -1,6 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {Bubble} from './model/bubble';
 
+class Dist {
+  dist?: number;
+  constructor(public minX: number, public maxX: number, public minY: number, public maxY: number) {
+  }
+  getCol() {
+    const col = this.dist * 1.5;
+    return `rgb(${col},${col},${col})`;
+  }
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,20 +20,32 @@ export class AppComponent implements OnInit {
 
   private _isGameOver = false;
   private _idLatest = 0;
-  private _sideMin = 200;
   private _sideMax = 200;
+  private _segments = 20;
 
-  _spaceW = 500;
-  _spaceH = 500;
+  spaceW = 500;
+  spaceH = 500;
   bubbles: Array<Bubble> = [];
 
-  range: {
-    minX: number;
-    maxX: number;
-    minY: number;
-    maxY: number;
-    dist: number;
-  };
+  dists: Array<Array<Dist>> = [];
+  distFurthest: Dist;
+
+  constructor() {
+    for (let j = 0; j < this._segments; j++) {
+      const segHeight = this.spaceH / this._segments;
+      const minY = j * segHeight;
+      const maxY = minY + segHeight;
+      for (let k = 0; k < this._segments; k++) {
+        if (k === 0) {
+          this.dists[j] = [];
+        }
+        const segWidth = this.spaceW / this._segments;
+        const minX = k * segWidth;
+        const maxX = minX + segWidth;
+        this.dists[j][k] = new Dist(minX, maxX, minY, maxY);
+      }
+    }
+  }
 
   ngOnInit() {
     this.createBubble();
@@ -52,72 +74,37 @@ export class AppComponent implements OnInit {
 
   private createBubble() {
     const side = this._sideMax;
-    const x = (side / 2) + Math.floor(Math.random() * (this._spaceW - side));
-    const y = (side / 2) + Math.floor(Math.random() * (this._spaceH - side));
+    const x = (side / 2) + Math.floor(Math.random() * (this.spaceW - side));
+    const y = (side / 2) + Math.floor(Math.random() * (this.spaceH - side));
     const bubble = new Bubble(this._idLatest++, x, y, side);
     this.bubbles.push(bubble);
-    this.range = this.calculateRemote();
+    this.distFurthest = this.calculateDists();
   }
 
-  get rangeWidth() {
-    return this.range.maxX - this.range.minX;
-  }
-
-  get rangeHeight() {
-    return this.range.maxY - this.range.minY;
-  }
-
-  private calculateRemote() {
-    const iterations = 3;
-    const segments = 5;
-    const range = {
-      minX: 0,
-      maxX: this._spaceW,
-      minY: 0,
-      maxY: this._spaceH,
-      dist: 0
-    };
-    for (let i = 0; i < iterations; i++) {
-      let rangeMinXNew, rangeMaxXNew, rangeMinYNew, rangeMaxYNew;
-      let distMax = -1;
-      for (let j = 0; j < segments; j++) {
-        const segHeight = (range.maxY - range.minY) / segments;
-        const blockMinY = range.minY + (j * segHeight);
-        const blockMaxY = blockMinY + segHeight;
-        for (let k = 0; k < segments; k++) {
-          const segWidth = (range.maxX - range.minX) / segments;
-          const blockMinX = range.minX + (k * segWidth);
-          const blockMaxX = blockMinX + segWidth;
-          const pointX = (blockMinX + blockMaxX) / 2;
-          const pointY = (blockMinY + blockMaxY) / 2;
-          const distEdgeX = Math.min(this._spaceW - pointX, pointX);
-          const distEdgeY = Math.min(this._spaceH - pointY, pointY);
-          let distBubbleMin = -1;
-          this.bubbles.forEach(b => {
-            const distBubbleX = Math.abs(b.x - pointX);
-            const distBubbleY = Math.abs(b.y - pointY);
-            const distBubble = Math.max(0, Math.sqrt((distBubbleX * distBubbleX) + (distBubbleY * distBubbleY)) - (b.side / 2));
-            if (distBubbleMin === -1 || distBubble < distBubbleMin) {
-              distBubbleMin = distBubble;
-            }
-          });
-          const distAllMin = Math.min(distBubbleMin, distEdgeY, distEdgeX);
-          if (distAllMin > distMax) {
-            distMax = distAllMin;
-            rangeMinXNew = blockMinX;
-            rangeMaxXNew = blockMaxX;
-            rangeMinYNew = blockMinY;
-            rangeMaxYNew = blockMaxY;
+  private calculateDists(): Dist {
+    let distItemFurthest = null;
+    this.dists.forEach(distRow => {
+      distRow.forEach(dist => {
+        const pointX = (dist.minX + dist.maxX) / 2;
+        const pointY = (dist.minY + dist.maxY) / 2;
+        const distEdgeX = Math.min(this.spaceW - pointX, pointX);
+        const distEdgeY = Math.min(this.spaceH - pointY, pointY);
+        let distBubbleMin = -1;
+        this.bubbles.forEach(b => {
+          const distBubbleX = Math.abs(b.x - pointX);
+          const distBubbleY = Math.abs(b.y - pointY);
+          const distBubble = Math.max(0, Math.sqrt((distBubbleX * distBubbleX) + (distBubbleY * distBubbleY)) - (b.side / 2));
+          if (distBubbleMin === -1 || distBubble < distBubbleMin) {
+            distBubbleMin = distBubble;
           }
+        });
+        dist.dist = Math.min(distBubbleMin, distEdgeY, distEdgeX);
+        if (!distItemFurthest || dist.dist > distItemFurthest.dist) {
+          distItemFurthest = dist;
         }
-      }
-      range.minX = rangeMinXNew;
-      range.maxX = rangeMaxXNew;
-      range.minY = rangeMinYNew;
-      range.maxY = rangeMaxYNew;
-      range.dist = distMax;
-    }
-    return range;
+      });
+    });
+    return distItemFurthest;
   }
 
 }
