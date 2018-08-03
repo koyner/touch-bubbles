@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
 
   private _isGameOver = false;
   private _idLatest = 0;
+  private _sideMin = 200;
   private _sideMax = 200;
 
   _spaceW = 500;

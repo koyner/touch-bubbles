@@ -1,5 +1,5 @@
-<div style="color:white;">
-  <div style="position:absolute;left:0;top:0;background-color:black;"
+<div style="color:white;position:absolute;left:50px;top:50px;">
+  <div style="position:absolute;left:0;top:0;background-color:white;"
        [style.width.px]="_spaceW"
        [style.height.px]="_spaceH">
   </div>
@@ -9,7 +9,7 @@
   </div>
   <div style="position: absolute;left:20px;top:20px;" *ngIf="isGameOver()">GAME OVER</div>
   <div style="position: absolute;left:280px;top:20px;">{{score}}</div>
-  <div style="position: absolute;background-color:yellow;"
+  <div style="position: absolute;background-color:black;"
        [style.left.px]="range.minX"
        [style.top.px]="range.minY"
        [style.width.px]="rangeWidth"
