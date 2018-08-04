@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Bubble} from '../model/bubble';
 
 @Component({
@@ -25,9 +25,9 @@ export class BubbleComponent {
   }
 
   get bgCol(): string {
-    if (this.bubble.side > 150) {
+    if (this.bubble.side > 120) {
       return '#00FF00';
-    } else if (this.bubble.side > 75) {
+    } else if (this.bubble.side > 60) {
       return '#FFFF00';
     } else {
       return '#FF0000';

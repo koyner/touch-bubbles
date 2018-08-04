@@ -9,6 +9,12 @@ class Dist {
     const col = this.dist * 1.5;
     return `rgb(${col},${col},${col})`;
   }
+  get x() {
+    return (this.minX + this.maxX) / 2;
+  }
+  get y() {
+    return (this.minY + this.maxY) / 2;
+  }
 }
 
 @Component({
@@ -21,8 +27,7 @@ export class AppComponent implements OnInit {
   private _anim: number;
   private _isGameOver = false;
   private _score = 0;
-  private _sideMax = 200;
-  private _segments = 50;
+  private _segments = 20;
 
   spaceW = 500;
   spaceH = 500;
@@ -57,7 +62,7 @@ export class AppComponent implements OnInit {
     this._score++;
     this.bubbles.splice(this.bubbles.indexOf(e), 1);
     this.createBubble();
-    if (this.score % 10 === 0) {
+    if (this.score % 5 === 0) {
       this.createBubble();
     }
   }
@@ -90,9 +95,13 @@ export class AppComponent implements OnInit {
   }
 
   private createBubble() {
-    const side = this._sideMax;
-    const x = (side / 2) + Math.floor(Math.random() * (this.spaceW - side));
-    const y = (side / 2) + Math.floor(Math.random() * (this.spaceH - side));
+    // const side = this._sideMin + (Math.random() * (this._sideMax - this._sideMin));
+    const side = this.distFurthest ?
+      this.distFurthest.dist * 2 : 200;
+    const x = this.distFurthest ?
+      (this.distFurthest.minX + this.distFurthest.maxX) / 2 : (side / 2) + Math.floor(Math.random() * (this.spaceW - side));
+    const y = this.distFurthest ?
+      (this.distFurthest.minY + this.distFurthest.maxY) / 2 : (side / 2) + Math.floor(Math.random() * (this.spaceH - side));
     const bubble = new Bubble(x, y, side);
     this.bubbles.push(bubble);
     this.calculateDists();

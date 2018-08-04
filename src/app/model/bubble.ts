@@ -6,7 +6,7 @@ export class Bubble {
   }
 
   update() {
-    this.side--;
+    this.side -= 0.5;
   }
 
 }
