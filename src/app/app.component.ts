@@ -6,7 +6,7 @@ class Dist {
   constructor(public minX: number, public maxX: number, public minY: number, public maxY: number) {
   }
   getCol() {
-    const col = this.dist * 1.5;
+    const col = this.dist * 1.3;
     return `rgb(${col},${col},${col})`;
   }
   get x() {
