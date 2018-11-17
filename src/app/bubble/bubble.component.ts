@@ -4,7 +4,7 @@ import {Bubble} from '../model/bubble';
 @Component({
   selector: 'app-bubble',
   templateUrl: './bubble.component.html',
-  styleUrls: ['./bubble.component.css']
+  styleUrls: ['./bubble.component.less']
 })
 export class BubbleComponent {
 
