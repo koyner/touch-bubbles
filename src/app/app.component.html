@@ -1,7 +1,7 @@
 <div style="color:white;position:absolute;left:50px;top:50px;">
   <div style="position:absolute;left:0;top:0;border:1px solid white;"
-       [style.width.px]="spaceW"
-       [style.height.px]="spaceH">
+       [style.width.px]="winW"
+       [style.height.px]="winH">
   </div>
   <div *ngFor="let bubble of bubbles">
     <app-bubble
@@ -16,22 +16,23 @@
   <div style="position: absolute;left:280px;top:20px;color:white;z-index:2;">
     {{score}}
   </div>
-  <ng-container *ngFor="let distRow of dists">
-    <ng-container *ngFor="let dist of distRow">
-      <div style="position:absolute;z-index:1;"
-           [style.left.px]="dist.minX + 1"
-           [style.top.px]="dist.minY + 1"
-           [style.width.px]="dist.maxX - dist.minX"
-           [style.height.px]="dist.maxY - dist.minY"
-           [style.background-color]="dist.getCol()">
+  <ng-container *ngFor="let distRow of dAll">
+    <ng-container *ngFor="let d of distRow">
+      <div *ngIf="d.dist > 0" style="position:absolute;z-index:1;"
+           [style.border-radius.px]="d.w / 2"
+           [style.left.px]="d.xMin + 1"
+           [style.top.px]="d.yMin + 1"
+           [style.width.px]="d.w"
+           [style.height.px]="d.h"
+           [style.background-color]="d === dFurthest ? 'cyan' : d.col">
       </div>
     </ng-container>
   </ng-container>
-  <div style="position:absolute;z-index:2;border:1px solid cyan;background:none;"
-       [style.left.px]="distFurthest.x - distFurthest.dist + 1"
-       [style.top.px]="distFurthest.y - distFurthest.dist + 1"
-       [style.width.px]="distFurthest.dist * 2"
-       [style.height.px]="distFurthest.dist * 2"
-       [style.border-radius.px]="distFurthest.dist">
+  <div style="position:absolute;border:1px solid cyan;background:none;z-index:2;"
+       [style.left.px]="dFurthest.x - dFurthest.dist"
+       [style.top.px]="dFurthest.y - dFurthest.dist"
+       [style.width.px]="dFurthest.dist * 2"
+       [style.height.px]="dFurthest.dist * 2"
+       [style.border-radius.px]="dFurthest.dist">
   </div>
 </div>

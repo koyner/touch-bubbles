@@ -12,11 +12,11 @@ export class BubbleComponent {
   @Input() isGameOver: boolean;
   @Output() killed: EventEmitter<Bubble> = new EventEmitter();
 
-  get xPos(): number {
+  get x(): number {
     return this.bubble.x - this.bubble.side / 2;
   }
 
-  get yPos(): number {
+  get y(): number {
     return this.bubble.y - this.bubble.side / 2;
   }
 
@@ -24,7 +24,7 @@ export class BubbleComponent {
     return this.bubble.side;
   }
 
-  get bgCol(): string {
+  get col(): string {
     if (this.bubble.side > 120) {
       return '#00FF00';
     } else if (this.bubble.side > 60) {
