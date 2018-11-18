@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Bubble} from '../model/bubble';
+import {Bubble} from '../../model/bubble';
 
 @Component({
   selector: 'app-bubble',

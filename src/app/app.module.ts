@@ -2,10 +2,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {BubbleComponent} from './bubble/bubble.component';
-import { BgDiscComponent } from './bg-disc/bg-disc.component';
-import { BgMeasureComponent } from './bg-measure/bg-measure.component';
-import { BgComponent } from './bg/bg.component';
+import {BubbleComponent} from './component/bubble/bubble.component';
+import { BgDiscComponent } from './component/bg-disc/bg-disc.component';
+import { BgMeasureComponent } from './component/bg-measure/bg-measure.component';
+import { BgComponent } from './component/bg/bg.component';
 
 @NgModule({
   declarations: [

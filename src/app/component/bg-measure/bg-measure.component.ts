@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import {Dist} from '../model/dist';
+import {Dist} from '../../model/dist';
 
 @Component({
   selector: 'app-bg-measure',
