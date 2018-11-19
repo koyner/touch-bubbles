@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Bubble} from '../../model/bubble';
+import {GameService} from '../../service/game.service';
 
 @Component({
   selector: 'app-bubble',
@@ -9,8 +10,9 @@ import {Bubble} from '../../model/bubble';
 export class BubbleComponent {
 
   @Input() bubble: Bubble;
-  @Input() isGameOver: boolean;
-  @Output() killed: EventEmitter<Bubble> = new EventEmitter();
+
+  constructor(private gameService: GameService) {
+  }
 
   get x(): number {
     return this.bubble.x - this.bubble.side / 2;
@@ -35,8 +37,8 @@ export class BubbleComponent {
   }
 
   clicked(): void {
-    if (!this.isGameOver) {
-      this.killed.emit(this.bubble);
+    if (!this.gameService.isOver()) {
+      this.gameService.kill(this.bubble);
     }
   }
 

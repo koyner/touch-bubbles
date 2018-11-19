@@ -1,6 +1,6 @@
 export class Bubble {
 
-  private _speed;
+  private readonly _speed;
 
   constructor(public x: number,
               public y: number,
@@ -8,7 +8,7 @@ export class Bubble {
     this._speed = this.side / 500;
   }
 
-  update() {
+  update(): void {
     this.side -= this._speed;
   }
 

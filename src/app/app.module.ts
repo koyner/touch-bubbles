@@ -3,17 +3,19 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {BubbleComponent} from './component/bubble/bubble.component';
-import { BgDiscComponent } from './component/bg-disc/bg-disc.component';
+import { BgDistComponent } from './component/bg-dist/bg-dist.component';
 import { BgMeasureComponent } from './component/bg-measure/bg-measure.component';
 import { BgComponent } from './component/bg/bg.component';
+import { BubblesComponent } from './component/bubbles/bubbles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BubbleComponent,
-    BgDiscComponent,
+    BgDistComponent,
     BgMeasureComponent,
-    BgComponent
+    BgComponent,
+    BubblesComponent
   ],
   imports: [
     BrowserModule

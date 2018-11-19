@@ -1,6 +1,6 @@
 export class Dist {
 
-  dist?: number;
+  offset?: number;
 
   constructor(public xMin: number,
               public xMax: number,
@@ -9,7 +9,7 @@ export class Dist {
   }
 
   get col(): string {
-    const col = this.dist * 1.5;
+    const col = this.offset * 1.5;
     return `rgb(${col},${col},${col})`;
   }
 

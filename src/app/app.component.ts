@@ -1,9 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 
-import {Bubble} from './model/bubble';
 import {GameService} from './service/game.service';
-import {BubbleService} from './service/bubble.service';
-import {DistService} from './service/dist.service';
 
 @Component({
   selector: 'app-root',
@@ -15,38 +12,19 @@ export class AppComponent implements OnInit {
   winW = 500;
   winH = 500;
 
-  constructor(@Inject('Window') private window: Window,
-              private distService: DistService,
-              private bubbleService: BubbleService,
-              private gameService: GameService) {
+  constructor(private gameService: GameService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.gameService.start();
   }
 
-  killed(e: Bubble) {
-    this.gameService.kill(e);
-  }
-
-  isGameOver() {
+  isGameOver(): boolean {
     return this.gameService.isOver();
   }
 
-  get score() {
+  get score(): number {
     return this.gameService.score;
-  }
-
-  get bubbles() {
-    return this.bubbleService.bubbles;
-  }
-
-  get dAll() {
-    return this.distService.dAll;
-  }
-
-  get dFurthest() {
-    return this.distService.dFurthest;
   }
 
 }

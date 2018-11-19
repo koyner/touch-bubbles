@@ -17,12 +17,12 @@ export class GameService {
               private distService: DistService) {
   }
 
-  start() {
+  start(): void {
     this.bubbleService.create();
-    this._anim = this.window.setInterval(this.update, 25);
+    this._anim = this.window.setInterval(this.update, 20);
   }
 
-  update = () => {
+  update = (): void => {
     if (!this.bubbleService.update()) {
       this.end();
     } else {
@@ -30,7 +30,7 @@ export class GameService {
     }
   }
 
-  kill(b: Bubble) {
+  kill(b: Bubble): void {
     this._score++;
     this.bubbleService.remove(b);
     this.bubbleService.create();
@@ -39,16 +39,16 @@ export class GameService {
     }
   }
 
-  end() {
+  end(): void {
     this.window.clearInterval(this._anim);
     this._isGameOver = true;
   }
 
-  isOver() {
+  isOver(): boolean {
     return this._isGameOver;
   }
 
-  get score() {
+  get score(): number {
     return this._score;
   }
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BgDiscComponent } from './bg-disc.component';
+import { BubblesComponent } from './bubbles.component';
 
-describe('BgDiscComponent', () => {
-  let component: BgDiscComponent;
-  let fixture: ComponentFixture<BgDiscComponent>;
+describe('BubblesComponent', () => {
+  let component: BubblesComponent;
+  let fixture: ComponentFixture<BubblesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BgDiscComponent ]
+      declarations: [ BubblesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BgDiscComponent);
+    fixture = TestBed.createComponent(BubblesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,39 +1,40 @@
 import {Injectable} from '@angular/core';
 import {Dist} from '../model/dist';
+import {Bubble} from '../model/bubble';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DistService {
 
-  private readonly _dDivs = 20;
+  private readonly _distDivisions = 40;
 
   winW = 500;
   winH = 500;
 
-  dAll: Array<Array<Dist>> = [];
-  dFurthest: Dist;
+  dists: Array<Array<Dist>> = [];
+  distFurthest: Dist;
 
   constructor() {
-    for (let j = 0; j < this._dDivs; j++) {
-      const divH = this.winH / this._dDivs;
+    for (let j = 0; j < this._distDivisions; j++) {
+      const divH = this.winH / this._distDivisions;
       const yMin = j * divH;
       const yMax = yMin + divH;
-      for (let k = 0; k < this._dDivs; k++) {
+      for (let k = 0; k < this._distDivisions; k++) {
         if (k === 0) {
-          this.dAll[j] = [];
+          this.dists[j] = [];
         }
-        const divW = this.winW / this._dDivs;
+        const divW = this.winW / this._distDivisions;
         const xMin = k * divW;
         const xMax = xMin + divW;
-        this.dAll[j][k] = new Dist(xMin, xMax, yMin, yMax);
+        this.dists[j][k] = new Dist(xMin, xMax, yMin, yMax);
       }
     }
   }
 
-  updateDistMatrix(bubbles) {
+  updateDistMatrix(bubbles: Array<Bubble>): void {
     let dFurthest = null;
-    this.dAll.forEach(dRow => {
+    this.dists.forEach(dRow => {
       dRow.forEach(d => {
         const x = (d.xMin + d.xMax) / 2;
         const y = (d.yMin + d.yMax) / 2;
@@ -48,12 +49,12 @@ export class DistService {
         });
         const distToEdgeX = Math.min(this.winW - x, x);
         const distToEdgeY = Math.min(this.winH - y, y);
-        d.dist = Math.min(distToBubble, distToEdgeY, distToEdgeX);
-        if (!dFurthest || d.dist > dFurthest.dist) {
+        d.offset = Math.min(distToBubble, distToEdgeY, distToEdgeX);
+        if (!dFurthest || d.offset > dFurthest.offset) {
           dFurthest = d;
         }
       });
     });
-    this.dFurthest = dFurthest;
+    this.distFurthest = dFurthest;
   }
 }

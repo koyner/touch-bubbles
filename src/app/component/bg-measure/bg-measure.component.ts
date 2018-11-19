@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
+import {DistService} from '../../service/dist.service';
 import {Dist} from '../../model/dist';
 
 @Component({
@@ -9,11 +10,13 @@ import {Dist} from '../../model/dist';
 })
 export class BgMeasureComponent implements OnInit {
 
-  @Input() dFurthest: Dist;
-
-  constructor() { }
+  constructor(private distService: DistService) { }
 
   ngOnInit() {
+  }
+
+  get distFurthest(): Dist {
+    return this.distService.distFurthest;
   }
 
 }

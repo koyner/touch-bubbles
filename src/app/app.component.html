@@ -3,14 +3,8 @@
        [style.width.px]="winW"
        [style.height.px]="winH">
   </div>
-  <div *ngFor="let bubble of bubbles">
-    <app-bubble
-      [bubble]=bubble
-      [isGameOver]="isGameOver()"
-      (killed)="killed($event)">
-    </app-bubble>
-  </div>
+  <app-bubbles></app-bubbles>
   <div id="game-status" *ngIf="isGameOver()">GAME OVER</div>
   <div id="game-score">{{score}}</div>
-  <app-bg [dAll]="dAll" [dFurthest]="dFurthest"></app-bg>
+  <app-bg></app-bg>
 </div>

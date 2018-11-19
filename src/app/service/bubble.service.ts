@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Bubble} from '../model/bubble';
 import {DistService} from './dist.service';
+import {Dist} from '../model/dist';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ export class BubbleService {
   constructor(private distService: DistService) {
   }
 
-  create() {
+  create(): void {
     const side = this.dFurthest ?
-      this.dFurthest.dist * 2 : 200;
+      this.dFurthest.offset * 2 : 200;
     const x = this.dFurthest ?
       (this.dFurthest.xMin + this.dFurthest.xMax) / 2 :
       (side / 2) + Math.floor(Math.random() * (this.distService.winW - side));
@@ -26,7 +27,7 @@ export class BubbleService {
     this.distService.updateDistMatrix(this.bubbles);
   }
 
-  remove(b: Bubble) {
+  remove(b: Bubble): void {
     this.bubbles.splice(this.bubbles.indexOf(b), 1);
   }
 
@@ -41,7 +42,7 @@ export class BubbleService {
     return isAlive;
   }
 
-  private get dFurthest() {
-    return this.distService.dFurthest;
+  private get dFurthest(): Dist {
+    return this.distService.distFurthest;
   }
 }

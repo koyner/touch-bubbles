@@ -1,6 +1,6 @@
-<ng-container *ngFor="let distRow of dAll">
-  <ng-container *ngFor="let d of distRow">
-    <app-bg-disc *ngIf="d.dist > 0" [d]="d" [isFurthest]="d === dFurthest"></app-bg-disc>
+<ng-container *ngFor="let distRow of dists">
+  <ng-container *ngFor="let dist of distRow">
+    <app-bg-dist *ngIf="dist.offset > 0" [dist]="dist"></app-bg-dist>
   </ng-container>
 </ng-container>
-<app-bg-measure [dFurthest]="dFurthest"></app-bg-measure>
+<app-bg-measure></app-bg-measure>
