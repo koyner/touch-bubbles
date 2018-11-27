@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+
 import {Dist} from '../model/dist';
 import {Bubble} from '../model/bubble';
 
@@ -7,24 +8,21 @@ import {Bubble} from '../model/bubble';
 })
 export class DistService {
 
-  private readonly _distDivisions = 40;
-
-  winW = 500;
-  winH = 500;
+  private readonly _distDivisions = 30;
 
   dists: Array<Array<Dist>> = [];
   distFurthest: Dist;
 
   constructor() {
     for (let j = 0; j < this._distDivisions; j++) {
-      const divH = this.winH / this._distDivisions;
+      const divH = 1 / this._distDivisions;
       const yMin = j * divH;
       const yMax = yMin + divH;
       for (let k = 0; k < this._distDivisions; k++) {
         if (k === 0) {
           this.dists[j] = [];
         }
-        const divW = this.winW / this._distDivisions;
+        const divW = 1 / this._distDivisions;
         const xMin = k * divW;
         const xMax = xMin + divW;
         this.dists[j][k] = new Dist(xMin, xMax, yMin, yMax);
@@ -47,8 +45,8 @@ export class DistService {
             distToBubble = distToBubbleCurrent;
           }
         });
-        const distToEdgeX = Math.min(this.winW - x, x);
-        const distToEdgeY = Math.min(this.winH - y, y);
+        const distToEdgeX = Math.min(1 - x, x);
+        const distToEdgeY = Math.min(1 - y, y);
         d.offset = Math.min(distToBubble, distToEdgeY, distToEdgeX);
         if (!dFurthest || d.offset > dFurthest.offset) {
           dFurthest = d;

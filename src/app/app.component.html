@@ -1,10 +1,15 @@
-<div id="main">
-  <div id="game-frame"
-       [style.width.px]="winW"
-       [style.height.px]="winH">
-  </div>
-  <app-bubbles></app-bubbles>
-  <div id="game-status" *ngIf="isGameOver()">GAME OVER</div>
-  <div id="game-score">{{score}}</div>
+<div id="main" (window:resize)="onResize()"
+     [style.left.px]="left"
+     [style.top.px]="top"
+     [style.width.px]="side"
+     [style.height.px]="side">
   <app-bg></app-bg>
+  <app-bubbles></app-bubbles>
 </div>
+
+<div id="status">
+  <div id="status-content">
+    Bubbles: {{ bubbleCount }}
+  </div>
+</div>
+

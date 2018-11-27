@@ -8,11 +8,6 @@ export class Dist {
               public yMax: number) {
   }
 
-  get col(): string {
-    const col = this.offset * 1.5;
-    return `rgb(${col},${col},${col})`;
-  }
-
   get x(): number {
     return (this.xMin + this.xMax) / 2;
   }

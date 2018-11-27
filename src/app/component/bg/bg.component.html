@@ -1,6 +1,6 @@
 <ng-container *ngFor="let distRow of dists">
   <ng-container *ngFor="let dist of distRow">
-    <app-bg-dist *ngIf="dist.offset > 0" [dist]="dist"></app-bg-dist>
+    <app-bg-dist *ngIf="getOffset(dist) > 0" [dist]="dist"></app-bg-dist>
   </ng-container>
 </ng-container>
 <app-bg-measure></app-bg-measure>

@@ -1,9 +1,10 @@
-<div class="bubble"
-     (click)="clicked()"
-     [style.background-color]="col"
-     [style.border-radius.px]="side / 2"
+<div class="bubble" (click)="clicked()"
+     [style.left.px]="x"
+     [style.top.px]="y"
      [style.width.px]="side"
      [style.height.px]="side"
-     [style.left.px]="x"
-     [style.top.px]="y">
+     [style.border-width.px]="borderSize"
+     [style.border-color]="borderCol"
+     [style.border-radius.px]="6 + (side / 2)"
+     [style.background-color]="bgCol">
 </div>
