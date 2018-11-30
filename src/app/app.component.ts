@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 
 import {GameService} from './service/game.service';
 import {ConstantsService} from './service/constants.service';
-import {BubbleService} from './service/bubble.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,6 @@ import {BubbleService} from './service/bubble.service';
 export class AppComponent implements OnInit {
 
   constructor(private gameService: GameService,
-              private bubbleService: BubbleService,
               private constants: ConstantsService) {
   }
 
@@ -22,10 +20,6 @@ export class AppComponent implements OnInit {
 
   onResize() {
     this.constants.resize();
-  }
-
-  get bubbleCount() {
-    return this.bubbleService.bubbles.length;
   }
 
   get left(): number {

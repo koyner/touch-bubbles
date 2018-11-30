@@ -8,7 +8,7 @@ import {Bubble} from '../model/bubble';
 })
 export class DistService {
 
-  private readonly _distDivisions = 30;
+  private readonly _distDivisions = 20;
 
   dists: Array<Array<Dist>> = [];
   distFurthest: Dist;
@@ -47,7 +47,8 @@ export class DistService {
         });
         const distToEdgeX = Math.min(1 - x, x);
         const distToEdgeY = Math.min(1 - y, y);
-        d.offset = Math.min(distToBubble, distToEdgeY, distToEdgeX);
+        const distToEdge = Math.min(distToEdgeY, distToEdgeX);
+        d.offset = distToBubble === -1 ? distToEdge : Math.min(distToBubble, distToEdge);
         if (!dFurthest || d.offset > dFurthest.offset) {
           dFurthest = d;
         }

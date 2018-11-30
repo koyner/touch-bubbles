@@ -6,6 +6,7 @@ import {Inject, Injectable} from '@angular/core';
 export class ConstantsService {
 
   side: number;
+  speed = 0.002;
 
   constructor(@Inject('Window') window: Window) {
     this.resize();
@@ -22,4 +23,5 @@ export class ConstantsService {
   get winH() {
     return window.innerHeight;
   }
+
 }

@@ -41,7 +41,7 @@ export class BgDistComponent implements OnInit {
   }
 
   get col() {
-    const col = this.dist.offset * this.constants.side * 1.5;
+    const col = this.dist.offset * this.constants.side * 2;
     return `rgb(${col},${col},${col})`;
   }
 
