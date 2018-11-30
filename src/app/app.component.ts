@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   }
 
   get side(): number {
-    return this.constants.side;
+    return this.constants.scale;
   }
 
 }

@@ -18,20 +18,20 @@ export class BgMeasureComponent implements OnInit {
   ngOnInit() {
   }
 
-  get left() {
-    return (this.distFurthest.x - this.distFurthest.offset) * this.constants.side;
+  get x() {
+    return (this.distFurthest.xMid - this.distFurthest.offset) * this.constants.scale;
   }
 
-  get top() {
-    return (this.distFurthest.y - this.distFurthest.offset) * this.constants.side;
+  get y() {
+    return (this.distFurthest.yMid - this.distFurthest.offset) * this.constants.scale;
   }
 
   get side() {
-    return this.distFurthest.offset * 2 * this.constants.side;
+    return this.distFurthest.offset * 2 * this.constants.scale;
   }
 
   get offset() {
-    return this.distFurthest.offset * this.constants.side;
+    return this.distFurthest.offset * this.constants.scale;
   }
 
   get distFurthest(): Dist {

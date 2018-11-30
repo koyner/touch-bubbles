@@ -2,26 +2,19 @@ export class Dist {
 
   offset?: number;
 
-  constructor(public xMin: number,
-              public xMax: number,
-              public yMin: number,
-              public yMax: number) {
+  constructor(public xMid: number,
+              public yMid: number,
+              public w: number,
+              public h: number) {
   }
 
   get x(): number {
-    return (this.xMin + this.xMax) / 2;
+    return this.xMid - (this.w / 2);
   }
 
   get y(): number {
-    return (this.yMin + this.yMax) / 2;
+    return this.yMid - (this.h / 2);
   }
 
-  get w(): number {
-    return this.xMax - this.xMin;
-  }
-
-  get h(): number {
-    return this.yMax - this.yMin;
-  }
 }
 

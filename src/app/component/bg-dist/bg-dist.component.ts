@@ -25,23 +25,23 @@ export class BgDistComponent implements OnInit {
   }
 
   get x() {
-    return this.dist.xMin * this.constants.side;
+    return this.dist.x * this.constants.scale;
   }
 
   get y() {
-    return this.dist.yMin * this.constants.side;
+    return this.dist.y * this.constants.scale;
   }
 
   get width() {
-    return this.dist.w * this.constants.side;
+    return this.dist.w * this.constants.scale;
   }
 
   get height() {
-    return this.dist.h * this.constants.side;
+    return this.dist.h * this.constants.scale;
   }
 
   get col() {
-    const col = this.dist.offset * this.constants.side * 2;
+    const col = this.dist.offset * this.constants.scale * 2;
     return `rgb(${col},${col},${col})`;
   }
 

@@ -8,24 +8,22 @@ import {Bubble} from '../model/bubble';
 })
 export class DistService {
 
-  private readonly _distDivisions = 20;
+  private readonly _distDivs = 20;
 
   dists: Array<Array<Dist>> = [];
   distFurthest: Dist;
 
   constructor() {
-    for (let j = 0; j < this._distDivisions; j++) {
-      const divH = 1 / this._distDivisions;
-      const yMin = j * divH;
-      const yMax = yMin + divH;
-      for (let k = 0; k < this._distDivisions; k++) {
+    for (let j = 0; j < this._distDivs; j++) {
+      const h = 1 / this._distDivs;
+      const y = j * h;
+      for (let k = 0; k < this._distDivs; k++) {
         if (k === 0) {
           this.dists[j] = [];
         }
-        const divW = 1 / this._distDivisions;
-        const xMin = k * divW;
-        const xMax = xMin + divW;
-        this.dists[j][k] = new Dist(xMin, xMax, yMin, yMax);
+        const w = 1 / this._distDivs;
+        const x = k * w;
+        this.dists[j][k] = new Dist(x + w / 2, y + h / 2, w, h);
       }
     }
   }
@@ -34,19 +32,17 @@ export class DistService {
     let dFurthest = null;
     this.dists.forEach(dRow => {
       dRow.forEach(d => {
-        const x = (d.xMin + d.xMax) / 2;
-        const y = (d.yMin + d.yMax) / 2;
         let distToBubble = -1;
         bubbles.forEach(b => {
-          const dX = Math.abs(b.x - x);
-          const dY = Math.abs(b.y - y);
+          const dX = Math.abs(b.xMid - d.xMid);
+          const dY = Math.abs(b.yMid - d.yMid);
           const distToBubbleCurrent = Math.max(0, Math.sqrt((dX * dX) + (dY * dY)) - (b.side / 2));
           if (distToBubble === -1 || distToBubbleCurrent < distToBubble) {
             distToBubble = distToBubbleCurrent;
           }
         });
-        const distToEdgeX = Math.min(1 - x, x);
-        const distToEdgeY = Math.min(1 - y, y);
+        const distToEdgeX = Math.min(1 - d.xMid, d.xMid);
+        const distToEdgeY = Math.min(1 - d.yMid, d.yMid);
         const distToEdge = Math.min(distToEdgeY, distToEdgeX);
         d.offset = distToBubble === -1 ? distToEdge : Math.min(distToBubble, distToEdge);
         if (!dFurthest || d.offset > dFurthest.offset) {

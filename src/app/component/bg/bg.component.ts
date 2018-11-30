@@ -22,7 +22,7 @@ export class BgComponent implements OnInit {
   }
 
   getOffset(dist: Dist) {
-    return dist.offset * this.constants.side;
+    return dist.offset * this.constants.scale;
   }
 
 }

@@ -5,7 +5,7 @@ import {Inject, Injectable} from '@angular/core';
 })
 export class ConstantsService {
 
-  side: number;
+  scale: number;
   speed = 0.002;
 
   constructor(@Inject('Window') window: Window) {
@@ -13,7 +13,7 @@ export class ConstantsService {
   }
 
   resize() {
-    this.side = Math.min(this.winW, this.winH) - 20;
+    this.scale = Math.min(this.winW, this.winH) - 20;
   }
 
   get winW() {

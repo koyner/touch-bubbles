@@ -21,13 +21,11 @@ export class BubbleService {
   create(): void {
     const side = this.distFurthest ?
       this.distFurthest.offset * 2 : 0.3;
-    const x = this.distFurthest ?
-      (this.distFurthest.xMin + this.distFurthest.xMax) / 2 :
-      (side / 2) + Math.random() * (1 - side);
-    const y = this.distFurthest ?
-      (this.distFurthest.yMin + this.distFurthest.yMax) / 2 :
-      (side / 2) + Math.random() * (1 - side);
-    const bubble = new Bubble(x, y, this.constants.speed, side);
+    const xMid = this.distFurthest ?
+      this.distFurthest.xMid : 0.5;
+    const yMid = this.distFurthest ?
+      this.distFurthest.yMid : 0.5;
+    const bubble = new Bubble(xMid, yMid, this.constants.speed, side);
     this.bubbles.push(bubble);
     this._tLastCreated = Date.now();
   }

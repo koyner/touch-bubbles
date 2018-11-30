@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
+
 import {Bubble} from '../../model/bubble';
-import {GameService} from '../../service/game.service';
 import {ConstantsService} from '../../service/constants.service';
 
 @Component({
@@ -12,20 +12,19 @@ export class BubbleComponent {
 
   @Input() bubble: Bubble;
 
-  constructor(private gameService: GameService,
-              private constants: ConstantsService) {
+  constructor(private constants: ConstantsService) {
   }
 
   get x(): number {
-    return (this.bubble.x - this.bubble.side / 2) * this.constants.side;
+    return this.bubble.x * this.constants.scale;
   }
 
   get y(): number {
-    return (this.bubble.y - this.bubble.side / 2) * this.constants.side;
+    return this.bubble.y * this.constants.scale;
   }
 
   get side(): number {
-    return this.bubble.side * this.constants.side;
+    return this.bubble.side * this.constants.scale;
   }
 
   get borderCol(): string {
