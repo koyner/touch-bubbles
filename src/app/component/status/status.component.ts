@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {MatSliderChange} from '@angular/material';
+import {MatSliderChange} from '@angular/material/slider';
 import {GameService} from '../../service/game.service';
 import {BubbleService} from '../../service/bubble.service';
 import {ConstantsService} from '../../service/constants.service';
