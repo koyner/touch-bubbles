@@ -27,12 +27,12 @@ export class BubbleComponent {
     return this.bubble.side * this.constants.scale;
   }
 
-  get borderCol(): string {
-    return `hsl(${this.hue}, 100%, 50%)`;
-  }
-
   get bgCol(): string {
     return `hsl(${this.hue}, 60%, 50%)`;
+  }
+
+  get borderCol(): string {
+    return `hsl(${this.hue}, 100%, 50%)`;
   }
 
   get borderSize(): number {

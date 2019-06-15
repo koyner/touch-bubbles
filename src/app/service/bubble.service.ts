@@ -47,6 +47,12 @@ export class BubbleService {
     return this._tLastCreated;
   }
 
+  registerSpeed(): void {
+    this.bubbles.forEach(b => {
+      b.speed = this.constants.speed;
+    });
+  }
+
   private get distFurthest(): Dist {
     return this.distService.distFurthest;
   }

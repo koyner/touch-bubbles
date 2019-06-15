@@ -8,7 +8,7 @@ export class ConstantsService {
   scale: number;
   speed = 0.002;
 
-  constructor(@Inject('Window') window: Window) {
+  constructor(@Inject('Window') private window: Window) {
     this.resize();
   }
 
@@ -17,11 +17,11 @@ export class ConstantsService {
   }
 
   get winW() {
-    return window.innerWidth;
+    return this.window.innerWidth;
   }
 
   get winH() {
-    return window.innerHeight;
+    return this.window.innerHeight;
   }
 
 }

@@ -34,8 +34,6 @@ export class StatusComponent implements OnInit {
 
   setSpeed(e: MatSliderChange): void {
     this.constants.speed = e.value / 1000;
-    this.bubbleService.bubbles.forEach(b => {
-      b.speed = this.constants.speed;
-    });
+    this.bubbleService.registerSpeed();
   }
 }

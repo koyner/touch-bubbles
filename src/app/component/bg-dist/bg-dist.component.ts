@@ -40,9 +40,12 @@ export class BgDistComponent implements OnInit {
     return this.dist.h * this.constants.scale;
   }
 
+  get brightness() {
+    return Math.floor(2 * this.dist.offset * 255);
+  }
+
   get col() {
-    const col = this.dist.offset * this.constants.scale * 2;
-    return `rgb(${col},${col},${col})`;
+    return `rgb(${this.brightness},${this.brightness},${this.brightness})`;
   }
 
 }

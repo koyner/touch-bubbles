@@ -1,15 +1,50 @@
 div#status {
   position: absolute;
-  padding: 10px;
   left: 0;
   top: 0;
   width: 200px;
   height: 100%;
-  background-color: #444;
+  background-color: #333;
   color: white;
 
-div#status-content {
-  position: relative;
-}
+  div#status-container {
+    position: relative;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 5px;
+    align-items: center;
+
+    div.count-title {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    div.count-val {
+      grid-row: 1;
+      grid-column: 2;
+    }
+
+    div.rate-title {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    div.rate-val {
+      grid-row: 2;
+      grid-column: 2;
+    }
+
+    div.speed-title {
+      grid-row: 3;
+      grid-column: 1;
+    }
+
+    div.speed-val {
+      grid-row: 3;
+      grid-column: 2;
+    }
+  }
 }
 
