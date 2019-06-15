@@ -1,14 +1,14 @@
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatSliderModule} from '@angular/material/slider';
 
 import {AppComponent} from './app.component';
-import {BubbleComponent} from './component/bubble/bubble.component';
 import {BgDistComponent} from './component/bg-dist/bg-dist.component';
 import {BgMeasureComponent} from './component/bg-measure/bg-measure.component';
 import {BgComponent} from './component/bg/bg.component';
+import {BubbleComponent} from './component/bubble/bubble.component';
 import {BubblesComponent} from './component/bubbles/bubbles.component';
 import {StatusComponent} from './component/status/status.component';
 
@@ -20,17 +20,10 @@ import {StatusComponent} from './component/status/status.component';
     BgMeasureComponent,
     BgComponent,
     BubblesComponent,
-    StatusComponent
+    StatusComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSliderModule
-  ],
-  providers: [
-    {provide: 'Window', useValue: window}
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, BrowserAnimationsModule, MatSliderModule],
+  providers: [{provide: 'Window', useValue: window}],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

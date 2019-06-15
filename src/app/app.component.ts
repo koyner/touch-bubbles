@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 
-import {GameService} from './service/game.service';
 import {ConstantsService} from './service/constants.service';
+import {GameService} from './service/game.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
 })
 export class AppComponent implements OnInit {
-
-  constructor(private gameService: GameService,
-              private constants: ConstantsService) {
-  }
+  constructor(
+    private gameService: GameService,
+    private constants: ConstantsService,
+  ) {}
 
   ngOnInit(): void {
     this.gameService.start();
@@ -33,5 +33,4 @@ export class AppComponent implements OnInit {
   get side(): number {
     return this.constants.scale;
   }
-
 }

@@ -6,14 +6,12 @@ import {ConstantsService} from '../../service/constants.service';
 @Component({
   selector: 'app-bubble',
   templateUrl: './bubble.component.html',
-  styleUrls: ['./bubble.component.less']
+  styleUrls: ['./bubble.component.less'],
 })
 export class BubbleComponent {
-
   @Input() bubble: Bubble;
 
-  constructor(private constants: ConstantsService) {
-  }
+  constructor(private constants: ConstantsService) {}
 
   get x(): number {
     return this.bubble.x * this.constants.scale;
@@ -46,5 +44,4 @@ export class BubbleComponent {
   private get hue(): number {
     return this.bubble.side * 360;
   }
-
 }

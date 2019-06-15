@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { BubbleService } from './bubble.service';
+import {BubbleService} from './bubble.service';
 
 describe('BubbleService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

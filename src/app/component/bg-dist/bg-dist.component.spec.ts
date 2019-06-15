@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BgDistComponent } from './bg-dist.component';
+import {BgDistComponent} from './bg-dist.component';
 
 describe('BgDistComponent', () => {
   let component: BgDistComponent;
@@ -8,9 +8,8 @@ describe('BgDistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BgDistComponent ]
-    })
-    .compileComponents();
+      declarations: [BgDistComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

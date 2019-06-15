@@ -4,16 +4,16 @@ import {BubbleService} from './bubble.service';
 import {DistService} from './dist.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GameService {
+  private rate = 500;
 
-  private _rate = 500;
-
-  constructor(@Inject('Window') private window: Window,
-              private bubbleService: BubbleService,
-              private distService: DistService) {
-  }
+  constructor(
+    @Inject('Window') private window: Window,
+    private bubbleService: BubbleService,
+    private distService: DistService,
+  ) {}
 
   start(): void {
     this.bubbleService.create();
@@ -22,15 +22,14 @@ export class GameService {
   }
 
   update = (): void => {
-    if (Date.now() - this.bubbleService.tLastCreated > this._rate) {
+    if (Date.now() - this.bubbleService.tLastCreated > this.rate) {
       this.bubbleService.create();
     }
     this.bubbleService.update();
     this.distService.updateDistMatrix(this.bubbleService.bubbles);
-  }
+  };
 
   updateRate(v: number): void {
-    this._rate = v;
+    this.rate = v;
   }
-
 }

@@ -1,24 +1,23 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import {Dist} from '../../model/dist';
-import {DistService} from '../../service/dist.service';
 import {ConstantsService} from '../../service/constants.service';
+import {DistService} from '../../service/dist.service';
 
 @Component({
   selector: 'app-bg-dist',
   templateUrl: './bg-dist.component.html',
-  styleUrls: ['./bg-dist.component.less']
+  styleUrls: ['./bg-dist.component.less'],
 })
 export class BgDistComponent implements OnInit {
-
   @Input() dist: Dist;
 
-  constructor(private distService: DistService,
-              private constants: ConstantsService) {
-  }
+  constructor(
+    private distService: DistService,
+    private constants: ConstantsService,
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   isFurthest(): boolean {
     return this.dist === this.distService.distFurthest;
@@ -47,5 +46,4 @@ export class BgDistComponent implements OnInit {
   get col() {
     return `rgb(${this.brightness},${this.brightness},${this.brightness})`;
   }
-
 }

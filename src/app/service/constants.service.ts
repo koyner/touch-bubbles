@@ -1,10 +1,9 @@
 import {Inject, Injectable} from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConstantsService {
-
   scale: number;
   speed = 0.002;
 
@@ -23,5 +22,4 @@ export class ConstantsService {
   get winH() {
     return this.window.innerHeight;
   }
-
 }

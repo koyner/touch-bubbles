@@ -1,16 +1,15 @@
 import {Injectable} from '@angular/core';
 
-import {Dist} from '../model/dist';
 import {Bubble} from '../model/bubble';
+import {Dist} from '../model/dist';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DistService {
-
   private readonly _distDivs = 20;
 
-  dists: Array<Array<Dist>> = [];
+  dists: Dist[][] = [];
   distFurthest: Dist;
 
   constructor() {
@@ -28,7 +27,7 @@ export class DistService {
     }
   }
 
-  updateDistMatrix(bubbles: Array<Bubble>): void {
+  updateDistMatrix(bubbles: Bubble[]): void {
     let dFurthest = null;
     this.dists.forEach(dRow => {
       dRow.forEach(d => {
@@ -36,7 +35,10 @@ export class DistService {
         bubbles.forEach(b => {
           const dX = Math.abs(b.xMid - d.xMid);
           const dY = Math.abs(b.yMid - d.yMid);
-          const distToBubbleCurrent = Math.max(0, Math.sqrt((dX * dX) + (dY * dY)) - (b.side / 2));
+          const distToBubbleCurrent = Math.max(
+            0,
+            Math.sqrt(dX * dX + dY * dY) - b.side / 2,
+          );
           if (distToBubble === -1 || distToBubbleCurrent < distToBubble) {
             distToBubble = distToBubbleCurrent;
           }
@@ -44,7 +46,8 @@ export class DistService {
         const distToEdgeX = Math.min(1 - d.xMid, d.xMid);
         const distToEdgeY = Math.min(1 - d.yMid, d.yMid);
         const distToEdge = Math.min(distToEdgeY, distToEdgeX);
-        d.offset = distToBubble === -1 ? distToEdge : Math.min(distToBubble, distToEdge);
+        d.offset =
+          distToBubble === -1 ? distToEdge : Math.min(distToBubble, distToEdge);
         if (!dFurthest || d.offset > dFurthest.offset) {
           dFurthest = d;
         }

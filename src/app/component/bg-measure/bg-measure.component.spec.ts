@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BgMeasureComponent } from './bg-measure.component';
+import {BgMeasureComponent} from './bg-measure.component';
 
 describe('BgMeasureComponent', () => {
   let component: BgMeasureComponent;
@@ -8,9 +8,8 @@ describe('BgMeasureComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BgMeasureComponent ]
-    })
-    .compileComponents();
+      declarations: [BgMeasureComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,24 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-
 import {MatSliderChange} from '@angular/material/slider';
-import {GameService} from '../../service/game.service';
+
 import {BubbleService} from '../../service/bubble.service';
 import {ConstantsService} from '../../service/constants.service';
+import {GameService} from '../../service/game.service';
 
 @Component({
   selector: 'app-status',
   templateUrl: './status.component.html',
-  styleUrls: ['./status.component.less']
+  styleUrls: ['./status.component.less'],
 })
 export class StatusComponent implements OnInit {
+  constructor(
+    private gameService: GameService,
+    private bubbleService: BubbleService,
+    private constants: ConstantsService,
+  ) {}
 
-  constructor(private gameService: GameService,
-              private bubbleService: BubbleService,
-              private constants: ConstantsService) {
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   get bubbleCount() {
     return this.bubbleService.bubbles.length;

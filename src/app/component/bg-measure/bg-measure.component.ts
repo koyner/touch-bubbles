@@ -1,29 +1,32 @@
 import {Component, OnInit} from '@angular/core';
 
-import {DistService} from '../../service/dist.service';
 import {Dist} from '../../model/dist';
 import {ConstantsService} from '../../service/constants.service';
+import {DistService} from '../../service/dist.service';
 
 @Component({
   selector: 'app-bg-measure',
   templateUrl: './bg-measure.component.html',
-  styleUrls: ['./bg-measure.component.less']
+  styleUrls: ['./bg-measure.component.less'],
 })
 export class BgMeasureComponent implements OnInit {
+  constructor(
+    private distService: DistService,
+    private constants: ConstantsService,
+  ) {}
 
-  constructor(private distService: DistService,
-              private constants: ConstantsService) {
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   get x() {
-    return (this.distFurthest.xMid - this.distFurthest.offset) * this.constants.scale;
+    return (
+      (this.distFurthest.xMid - this.distFurthest.offset) * this.constants.scale
+    );
   }
 
   get y() {
-    return (this.distFurthest.yMid - this.distFurthest.offset) * this.constants.scale;
+    return (
+      (this.distFurthest.yMid - this.distFurthest.offset) * this.constants.scale
+    );
   }
 
   get side() {
@@ -37,5 +40,4 @@ export class BgMeasureComponent implements OnInit {
   get distFurthest(): Dist {
     return this.distService.distFurthest;
   }
-
 }

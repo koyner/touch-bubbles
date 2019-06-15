@@ -1,19 +1,19 @@
 export class Bubble {
-
   private _reverse = false;
 
-  constructor(public xMid: number,
-              public yMid: number,
-              public speed: number,
-              public side: number) {
-  }
+  constructor(
+    public xMid: number,
+    public yMid: number,
+    public speed: number,
+    public side: number,
+  ) {}
 
   get x(): number {
-    return this.xMid - (this.side / 2);
+    return this.xMid - this.side / 2;
   }
 
   get y(): number {
-    return this.yMid - (this.side / 2);
+    return this.yMid - this.side / 2;
   }
 
   update(): void {
@@ -23,5 +23,4 @@ export class Bubble {
   reverse(): void {
     this._reverse = !this._reverse;
   }
-
 }
