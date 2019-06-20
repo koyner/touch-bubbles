@@ -1,0 +1,20 @@
+<div *ngIf="!draw.isCanvasReady() && level >= settings.hideLevels"
+  class="node"
+  [style.background-color]="bgCol"
+  [style.opacity]="opacity"
+  [style.border]="border"
+  [style.border-radius.px]="borderRadius"
+  [style.width.px]="size"
+  [style.height.px]="size"
+  [style.left.px]="x - (size / 2)"
+  [style.top.px]="y - (size / 2)">
+</div>
+
+<ng-container *ngIf="level < settings.levels - 1">
+  <app-node *ngFor="let arm of settings.arms"
+    [level]="level + 1"
+    [pos]="arm"
+    [xParent]="x"
+    [yParent]="y">
+  </app-node>
+</ng-container>

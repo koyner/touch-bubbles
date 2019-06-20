@@ -1,0 +1,180 @@
+<div id="settings">
+  <div id="container">
+    <div *ngIf="!isOpen">
+      <mat-label>
+        <a (click)="open()" style="color:white;font-size:120%;">☰ Settings</a>
+      </mat-label>
+    </div>
+    <div *ngIf="isOpen">
+      <mat-card>
+        <mat-card-content>
+          <div style="float:right;">
+            <a (click)="close()">Close</a>
+          </div>
+          <h3>
+            <mat-label>Settings</mat-label>
+          </h3>
+          <table>
+            <tr>
+              <td>
+                <mat-label>Arms</mat-label>
+              </td>
+              <td>
+                <mat-slider
+                  (input)="updateArmsHandler($event)"
+                  [value]="settings.armsCount"
+                  [thumbLabel]="true"
+                  [tickInterval]="1"
+                  [step]="settings.armsCountStep"
+                  [min]="settings.armsCountMin"
+                  [max]="settings.armsCountMax">
+                </mat-slider>
+              </td>
+              <td>
+                <mat-label>{{ settings.armsCount }}</mat-label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-label>Levels</mat-label>
+              </td>
+              <td>
+                <mat-slider
+                  (input)="settings.levels = $event.source.value"
+                  [(ngModel)]="settings.levels"
+                  [thumbLabel]="true"
+                  [tickInterval]="1"
+                  [step]="settings.levelsStep"
+                  [min]="settings.levelsMin"
+                  [max]="settings.levelsMax">
+                </mat-slider>
+              </td>
+              <td>
+                <mat-label>{{ settings.levels }}</mat-label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-label>Hide Levels</mat-label>
+              </td>
+              <td>
+                <mat-slider
+                  (input)="settings.hideLevels = $event.source.value"
+                  [(ngModel)]="settings.hideLevels"
+                  [thumbLabel]="true"
+                  [tickInterval]="1"
+                  [step]="settings.hideLevelsStep"
+                  [min]="settings.hideLevelsMin"
+                  [max]="settings.hideLevelsMax">
+                </mat-slider>
+              </td>
+              <td>
+                <mat-label>{{ settings.hideLevels }}</mat-label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-label>Size</mat-label>
+              </td>
+              <td>
+                <mat-slider
+                  (input)="settings.size = $event.source.value"
+                  [(ngModel)]="settings.size"
+                  [step]="settings.sizeStep"
+                  [min]="settings.sizeMin"
+                  [max]="settings.sizeMax">
+                </mat-slider>
+              </td>
+              <td>
+                <mat-label>{{ settings.size | number : '1.1-1' }}</mat-label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-label>Speed</mat-label>
+              </td>
+              <td>
+                <mat-slider
+                  (input)="settings.speed = $event.source.value"
+                  [(ngModel)]="settings.speed"
+                  [step]="settings.speedStep"
+                  [min]="settings.speedMin"
+                  [max]="settings.speedMax">
+                </mat-slider>
+              </td>
+              <td>
+                <mat-label>{{ settings.speed / 100 | number: '1.1-1' }}</mat-label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-label>Acceleration</mat-label>
+              </td>
+              <td>
+                <mat-slider
+                  (input)="settings.accel = $event.source.value"
+                  [(ngModel)]="settings.accel"
+                  [thumbLabel]="true"
+                  [step]="settings.accelStep"
+                  [min]="settings.accelMin"
+                  [max]="settings.accelMax">
+                </mat-slider>
+              </td>
+              <td>
+                <mat-label>{{ settings.accel | number : '1.1-1' }}</mat-label>
+              </td>
+            </tr>
+          </table>
+        </mat-card-content>
+        <mat-card-content>
+          <div style="float:left;padding-right:50px;">
+            <h3>
+              <mat-label>Rendering</mat-label>
+            </h3>
+            <mat-radio-group [(ngModel)]="settings.canvasMode">
+              <div style="padding-bottom: 5px;">
+                <mat-radio-button [value]="true">Canvas</mat-radio-button>
+              </div>
+              <div style="padding-bottom: 5px;">
+                <mat-radio-button [value]="false">DOM</mat-radio-button>
+              </div>
+            </mat-radio-group>
+            <div>
+              FPS: {{animate.fps | number: '1.1-1'}}
+            </div>
+          </div>
+          <div style="float:left;">
+            <h3>
+              <mat-label>Options</mat-label>
+            </h3>
+            <div>
+              <mat-checkbox [(ngModel)]="settings.solid">Solid</mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox [(ngModel)]="settings.opaque">Opaque</mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox [(ngModel)]="settings.colourful">Colourful</mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox [(ngModel)]="settings.circles">Circles</mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox [(ngModel)]="settings.alternate">Alternate</mat-checkbox>
+            </div>
+            <h4>
+              <mat-label>Canvas-only</mat-label>
+            </h4>
+            <div>
+              <mat-checkbox [(ngModel)]="settings.trail" [disabled]="!settings.canvasMode">Trails</mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox [(ngModel)]="settings.lines" [disabled]="!settings.canvasMode">Connectors</mat-checkbox>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

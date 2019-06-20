@@ -228,6 +228,119 @@
           }
         }
       }
+    },
+    "sierpinski": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/sierpinski",
+      "sourceRoot": "projects/sierpinski/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sierpinski",
+            "index": "projects/sierpinski/src/index.html",
+            "main": "projects/sierpinski/src/main.ts",
+            "polyfills": "projects/sierpinski/src/polyfills.ts",
+            "tsConfig": "projects/sierpinski/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/sierpinski/src/favicon.ico",
+              "projects/sierpinski/src/assets"
+            ],
+            "styles": [
+              "projects/sierpinski/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/sierpinski/src/environments/environment.ts",
+                  "with": "projects/sierpinski/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sierpinski:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sierpinski:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sierpinski:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sierpinski/src/test.ts",
+            "polyfills": "projects/sierpinski/src/polyfills.ts",
+            "tsConfig": "projects/sierpinski/tsconfig.spec.json",
+            "karmaConfig": "projects/sierpinski/karma.conf.js",
+            "assets": [
+              "projects/sierpinski/src/favicon.ico",
+              "projects/sierpinski/src/assets"
+            ],
+            "styles": [
+              "projects/sierpinski/src/styles.less"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sierpinski/tsconfig.app.json",
+              "projects/sierpinski/tsconfig.spec.json",
+              "projects/sierpinski/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/sierpinski/e2e/protractor.conf.js",
+            "devServerTarget": "sierpinski:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sierpinski:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "touch"
