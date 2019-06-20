@@ -3,28 +3,28 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "touch-bubbles": {
-      "root": "",
-      "sourceRoot": "src",
+    "minitest": {
       "projectType": "application",
-      "prefix": "app",
       "schematics": {},
+      "root": "projects/minitest",
+      "sourceRoot": "projects/minitest/src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/touch-bubbles",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/minitest",
+            "index": "projects/minitest/src/index.html",
+            "main": "projects/minitest/src/main.ts",
+            "polyfills": "projects/minitest/src/polyfills.ts",
+            "tsConfig": "projects/minitest/tsconfig.app.json",
+            "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/minitest/src/favicon.ico",
+              "projects/minitest/src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.less"
+              "projects/minitest/src/styles.css"
             ],
             "scripts": []
           },
@@ -32,8 +32,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/minitest/src/environments/environment.ts",
+                  "with": "projects/minitest/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -44,86 +44,191 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "touch-bubbles:build"
+            "browserTarget": "minitest:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "touch-bubbles:build:production"
+              "browserTarget": "minitest:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "touch-bubbles:build"
+            "browserTarget": "minitest:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.less"
-            ],
-            "scripts": [],
+            "main": "projects/minitest/src/test.ts",
+            "polyfills": "projects/minitest/src/polyfills.ts",
+            "tsConfig": "projects/minitest/tsconfig.spec.json",
+            "karmaConfig": "projects/minitest/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
+              "projects/minitest/src/favicon.ico",
+              "projects/minitest/src/assets"
+            ],
+            "styles": [
+              "projects/minitest/src/styles.css"
+            ],
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/minitest/tsconfig.app.json",
+              "projects/minitest/tsconfig.spec.json",
+              "projects/minitest/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        }
-      }
-    },
-    "touch-bubbles-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
+        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "touch-bubbles:serve"
+            "protractorConfig": "projects/minitest/e2e/protractor.conf.js",
+            "devServerTarget": "minitest:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "touch-bubbles:serve:production"
+              "devServerTarget": "minitest:serve:production"
             }
+          }
+        }
+      }
+    },
+    "touch": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/touch",
+      "sourceRoot": "projects/touch/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/touch",
+            "index": "projects/touch/src/index.html",
+            "main": "projects/touch/src/main.ts",
+            "polyfills": "projects/touch/src/polyfills.ts",
+            "tsConfig": "projects/touch/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/touch/src/favicon.ico",
+              "projects/touch/src/assets"
+            ],
+            "styles": [
+              "projects/touch/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/touch/src/environments/environment.ts",
+                  "with": "projects/touch/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "touch:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "touch:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "touch:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/touch/src/test.ts",
+            "polyfills": "projects/touch/src/polyfills.ts",
+            "tsConfig": "projects/touch/tsconfig.spec.json",
+            "karmaConfig": "projects/touch/karma.conf.js",
+            "assets": [
+              "projects/touch/src/favicon.ico",
+              "projects/touch/src/assets"
+            ],
+            "styles": [
+              "projects/touch/src/styles.less"
+            ],
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": [
+              "projects/touch/tsconfig.app.json",
+              "projects/touch/tsconfig.spec.json",
+              "projects/touch/e2e/tsconfig.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/touch/e2e/protractor.conf.js",
+            "devServerTarget": "touch:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "touch:serve:production"
+            }
           }
         }
       }
     }
   },
-  "defaultProject": "touch-bubbles"
+  "defaultProject": "touch"
 }
