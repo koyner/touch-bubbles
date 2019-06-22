@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {SettingsService} from '../settings/settings.service';
 
-export interface Renderable {
+export interface IRenderable {
   render: () => void;
 }
 
@@ -11,7 +11,7 @@ export class DrawService {
   private _isCanvasRendered = false;
 
   ctx: CanvasRenderingContext2D;
-  renderables: Array<Renderable> = [];
+  renderables: IRenderable[] = [];
 
   constructor(private settings: SettingsService) {}
 

@@ -1,10 +1,10 @@
+import {DebugElement} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
 
 import {AppComponent} from './app.component';
 
-describe('AppComponent', function() {
+describe('AppComponent', () => {
   let de: DebugElement;
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;

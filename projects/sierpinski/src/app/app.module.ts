@@ -1,22 +1,22 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatSliderModule,
-  MatInputModule,
+  MatCardModule,
   MatCheckboxModule,
   MatFormFieldModule,
-  MatCardModule,
+  MatInputModule,
   MatRadioModule,
+  MatSliderModule,
 } from '@angular/material';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AnimateService} from './animate/animate.service';
 
 import {AppComponent} from './app.component';
-import {NodeComponent} from './node/node.component';
-import {SettingsService} from './settings/settings.service';
-import {SettingsComponent} from './settings/settings.component';
-import {AnimateService} from './animate/animate.service';
 import {DrawService} from './draw/draw.service';
+import {NodeComponent} from './node/node.component';
+import {SettingsComponent} from './settings/settings.component';
+import {SettingsService} from './settings/settings.service';
 
 @NgModule({
   imports: [

@@ -14,7 +14,7 @@ export class SettingsService {
   armsCountDebounce = 500;
 
   // The arms themselves
-  arms: Array<number>;
+  arms: number[];
 
   // Number of node levels
   _levels = 7;

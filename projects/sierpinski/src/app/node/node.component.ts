@@ -1,9 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
-
-import {SettingsService} from '../settings/settings.service';
-import {DrawService, Renderable} from '../draw/draw.service';
 import {AnimateService} from '../animate/animate.service';
+import {DrawService, IRenderable} from '../draw/draw.service';
+import {SettingsService} from '../settings/settings.service';
 
 enum Axis {
   x,
@@ -15,7 +14,7 @@ enum Axis {
   templateUrl: './node.component.html',
   styleUrls: ['./node.component.less'],
 })
-export class NodeComponent implements OnInit, OnDestroy, Renderable {
+export class NodeComponent implements OnInit, OnDestroy, IRenderable {
   private static get colRand(): number {
     return Math.floor(50 + Math.random() * 200);
   }

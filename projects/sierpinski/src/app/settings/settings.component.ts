@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatSliderChange} from '@angular/material';
 
 import {Observable} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 import {AnimateService} from '../animate/animate.service';
 
@@ -41,13 +42,14 @@ export class SettingsComponent implements OnInit {
   // Get an observable that reacts to changes to the arms count slider, with a debounce time of 500ms.
   // We need debounce because updating the arms count triggers a lot of new calculations.
   private armsCountUpdates(): Observable<number> {
-    return Observable.create(observer => {
+    return new Observable<number>(observer => {
       this.updateArmsHandler = (event: MatSliderChange) => {
         observer.next(event.source.value);
       };
-    })
-      .distinctUntilChanged()
-      .debounceTime(this.settings.armsCountDebounce);
+    }).pipe(
+      distinctUntilChanged(),
+      debounceTime(this.settings.armsCountDebounce),
+    );
   }
 
   private createArms() {

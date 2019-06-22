@@ -5,9 +5,9 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import {AnimateService} from './animate/animate.service';
 
 import {DrawService} from './draw/draw.service';
-import {AnimateService} from './animate/animate.service';
 import {SettingsService} from './settings/settings.service';
 
 @Component({

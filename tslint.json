@@ -87,7 +87,6 @@
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "no-submodule-imports": false,
-    "no-implicit-dependencies": [true, "dev"],
-    "lines-between-class-members": "always"
+    "no-implicit-dependencies": [true, "dev"]
   }
 }
