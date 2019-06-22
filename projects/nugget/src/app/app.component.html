@@ -1,0 +1,24 @@
+<div id="content_outer">
+
+  <div id="content_inner">
+
+    <div style="float:left;">
+      <div id="logo">
+        <a routerLink="home">Nugget</a>
+      </div>
+      <menu id="main">
+        <li routerLink="home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</li>
+        <li>Nuggets</li>
+        <li routerLink="quizzes" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Quizzes</li>
+        <li routerLink="about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About</li>
+        <li>Profile</li>
+      </menu>
+    </div>
+
+    <div style="clear: both;">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
