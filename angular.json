@@ -567,6 +567,41 @@
           }
         }
       }
+    },
+    "mrb-logging": {
+      "projectType": "library",
+      "root": "projects/mrb-logging",
+      "sourceRoot": "projects/mrb-logging/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mrb-logging/tsconfig.lib.json",
+            "project": "projects/mrb-logging/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mrb-logging/src/test.ts",
+            "tsConfig": "projects/mrb-logging/tsconfig.spec.json",
+            "karmaConfig": "projects/mrb-logging/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mrb-logging/tsconfig.lib.json",
+              "projects/mrb-logging/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "touch"

@@ -1,0 +1,10 @@
+{
+  "name": "mrb-logging",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.0.1",
+    "@angular/core": "^8.0.1",
+    "zone.js": "^0.9.1",
+    "@angular/platform-browser-dynamic": "^8.0.2"
+  }
+}

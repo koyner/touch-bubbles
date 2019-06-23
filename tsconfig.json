@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "module": "es6",
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -15,7 +16,17 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "mrb-logging": [
+        "dist/mrb-logging",
+        "dist/mrb-logging"
+      ],
+      "mrb-logging/*": [
+        "dist/mrb-logging/*",
+        "dist/mrb-logging/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
