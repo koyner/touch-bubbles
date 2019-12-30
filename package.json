@@ -58,6 +58,15 @@
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "~3.5.3"
   },
+  "resolutions": {
+    "lodash": "~4.17.11",
+    "js-yaml": "~3.13.1",
+    "serialize-javascript": "~2.1.1",
+    "https-proxy-agent": "~2.2.3",
+    "handlebars": "~4.5.3",
+    "mixin-deep": "~2.0.1",
+    "set-value": "~3.0.1"
+  },
   "prettier": {
     "arrowParens": "avoid",
     "bracketSpacing": false,
