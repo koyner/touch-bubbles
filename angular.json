@@ -602,6 +602,128 @@
           }
         }
       }
+    },
+    "threejs": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      },
+      "root": "projects/threejs",
+      "sourceRoot": "projects/threejs/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/threejs",
+            "index": "projects/threejs/src/index.html",
+            "main": "projects/threejs/src/main.ts",
+            "polyfills": "projects/threejs/src/polyfills.ts",
+            "tsConfig": "projects/threejs/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/threejs/src/favicon.ico",
+              "projects/threejs/src/assets"
+            ],
+            "styles": [
+              "projects/threejs/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/threejs/src/environments/environment.ts",
+                  "with": "projects/threejs/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "threejs:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "threejs:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "threejs:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/threejs/src/test.ts",
+            "polyfills": "projects/threejs/src/polyfills.ts",
+            "tsConfig": "projects/threejs/tsconfig.spec.json",
+            "karmaConfig": "projects/threejs/karma.conf.js",
+            "assets": [
+              "projects/threejs/src/favicon.ico",
+              "projects/threejs/src/assets"
+            ],
+            "styles": [
+              "projects/threejs/src/styles.less"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/threejs/tsconfig.app.json",
+              "projects/threejs/tsconfig.spec.json",
+              "projects/threejs/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/threejs/e2e/protractor.conf.js",
+            "devServerTarget": "threejs:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "threejs:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "touch"
