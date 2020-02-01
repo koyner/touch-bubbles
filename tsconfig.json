@@ -31,6 +31,6 @@
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "preserveWhitespaces": true,
-    "enableIvy": true
+    "enableIvy": false
   }
 }
