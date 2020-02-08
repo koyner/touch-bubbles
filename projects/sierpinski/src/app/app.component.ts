@@ -16,8 +16,8 @@ import {SettingsService} from './settings/settings.service';
   templateUrl: 'app.component.html',
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  @ViewChild('appCanvas', {static: false}) canvasRef: ElementRef;
-  @ViewChild('appNodes', {static: false}) nodesRef: ElementRef;
+  @ViewChild('appCanvas') canvasRef: ElementRef;
+  @ViewChild('appNodes') nodesRef: ElementRef;
 
   constructor(
     private animate: AnimateService,
