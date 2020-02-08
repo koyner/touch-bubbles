@@ -27,7 +27,8 @@
                   [tickInterval]="1"
                   [step]="settings.armsCountStep"
                   [min]="settings.armsCountMin"
-                  [max]="settings.armsCountMax">
+                  [max]="settings.armsCountMax"
+                >
                 </mat-slider>
               </td>
               <td>
@@ -46,7 +47,8 @@
                   [tickInterval]="1"
                   [step]="settings.levelsStep"
                   [min]="settings.levelsMin"
-                  [max]="settings.levelsMax">
+                  [max]="settings.levelsMax"
+                >
                 </mat-slider>
               </td>
               <td>
@@ -65,7 +67,8 @@
                   [tickInterval]="1"
                   [step]="settings.hideLevelsStep"
                   [min]="settings.hideLevelsMin"
-                  [max]="settings.hideLevelsMax">
+                  [max]="settings.hideLevelsMax"
+                >
                 </mat-slider>
               </td>
               <td>
@@ -82,11 +85,12 @@
                   [(ngModel)]="settings.size"
                   [step]="settings.sizeStep"
                   [min]="settings.sizeMin"
-                  [max]="settings.sizeMax">
+                  [max]="settings.sizeMax"
+                >
                 </mat-slider>
               </td>
               <td>
-                <mat-label>{{ settings.size | number : '1.1-1' }}</mat-label>
+                <mat-label>{{ settings.size | number: '1.1-1' }}</mat-label>
               </td>
             </tr>
             <tr>
@@ -99,11 +103,14 @@
                   [(ngModel)]="settings.speed"
                   [step]="settings.speedStep"
                   [min]="settings.speedMin"
-                  [max]="settings.speedMax">
+                  [max]="settings.speedMax"
+                >
                 </mat-slider>
               </td>
               <td>
-                <mat-label>{{ settings.speed / 100 | number: '1.1-1' }}</mat-label>
+                <mat-label>{{
+                  settings.speed / 100 | number: '1.1-1'
+                }}</mat-label>
               </td>
             </tr>
             <tr>
@@ -117,11 +124,12 @@
                   [thumbLabel]="true"
                   [step]="settings.accelStep"
                   [min]="settings.accelMin"
-                  [max]="settings.accelMax">
+                  [max]="settings.accelMax"
+                >
                 </mat-slider>
               </td>
               <td>
-                <mat-label>{{ settings.accel | number : '1.1-1' }}</mat-label>
+                <mat-label>{{ settings.accel | number: '1.1-1' }}</mat-label>
               </td>
             </tr>
           </table>
@@ -139,9 +147,7 @@
                 <mat-radio-button [value]="false">DOM</mat-radio-button>
               </div>
             </mat-radio-group>
-            <div>
-              FPS: {{animate.fps | number: '1.1-1'}}
-            </div>
+            <div>FPS: {{ animate.fps | number: '1.1-1' }}</div>
           </div>
           <div style="float:left;">
             <h3>
@@ -154,22 +160,36 @@
               <mat-checkbox [(ngModel)]="settings.opaque">Opaque</mat-checkbox>
             </div>
             <div>
-              <mat-checkbox [(ngModel)]="settings.colourful">Colourful</mat-checkbox>
+              <mat-checkbox [(ngModel)]="settings.colourful"
+                >Colourful</mat-checkbox
+              >
             </div>
             <div>
-              <mat-checkbox [(ngModel)]="settings.circles">Circles</mat-checkbox>
+              <mat-checkbox [(ngModel)]="settings.circles"
+                >Circles</mat-checkbox
+              >
             </div>
             <div>
-              <mat-checkbox [(ngModel)]="settings.alternate">Alternate</mat-checkbox>
+              <mat-checkbox [(ngModel)]="settings.alternate"
+                >Alternate</mat-checkbox
+              >
             </div>
             <h4>
               <mat-label>Canvas-only</mat-label>
             </h4>
             <div>
-              <mat-checkbox [(ngModel)]="settings.trail" [disabled]="!settings.canvasMode">Trails</mat-checkbox>
+              <mat-checkbox
+                [(ngModel)]="settings.trail"
+                [disabled]="!settings.canvasMode"
+                >Trails</mat-checkbox
+              >
             </div>
             <div>
-              <mat-checkbox [(ngModel)]="settings.lines" [disabled]="!settings.canvasMode">Connectors</mat-checkbox>
+              <mat-checkbox
+                [(ngModel)]="settings.lines"
+                [disabled]="!settings.canvasMode"
+                >Connectors</mat-checkbox
+              >
             </div>
           </div>
           <div style="clear:both"></div>

@@ -23,9 +23,7 @@
               "projects/minitest/src/favicon.ico",
               "projects/minitest/src/assets"
             ],
-            "styles": [
-              "projects/minitest/src/styles.css"
-            ],
+            "styles": ["projects/minitest/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -87,9 +85,7 @@
               "projects/minitest/src/favicon.ico",
               "projects/minitest/src/assets"
             ],
-            "styles": [
-              "projects/minitest/src/styles.css"
-            ],
+            "styles": ["projects/minitest/src/styles.css"],
             "scripts": []
           }
         },
@@ -101,9 +97,7 @@
               "projects/minitest/tsconfig.spec.json",
               "projects/minitest/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -140,9 +134,7 @@
               "projects/touch/src/favicon.ico",
               "projects/touch/src/assets"
             ],
-            "styles": [
-              "projects/touch/src/styles.less"
-            ],
+            "styles": ["projects/touch/src/styles.less"],
             "scripts": []
           },
           "configurations": {
@@ -204,9 +196,7 @@
               "projects/touch/src/favicon.ico",
               "projects/touch/src/assets"
             ],
-            "styles": [
-              "projects/touch/src/styles.less"
-            ],
+            "styles": ["projects/touch/src/styles.less"],
             "scripts": []
           }
         },
@@ -218,9 +208,7 @@
               "projects/touch/tsconfig.spec.json",
               "projects/touch/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -257,9 +245,7 @@
               "projects/sierpinski/src/favicon.ico",
               "projects/sierpinski/src/assets"
             ],
-            "styles": [
-              "projects/sierpinski/src/styles.less"
-            ],
+            "styles": ["projects/sierpinski/src/styles.less"],
             "scripts": []
           },
           "configurations": {
@@ -321,9 +307,7 @@
               "projects/sierpinski/src/favicon.ico",
               "projects/sierpinski/src/assets"
             ],
-            "styles": [
-              "projects/sierpinski/src/styles.less"
-            ],
+            "styles": ["projects/sierpinski/src/styles.less"],
             "scripts": []
           }
         },
@@ -335,9 +319,7 @@
               "projects/sierpinski/tsconfig.spec.json",
               "projects/sierpinski/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -374,9 +356,7 @@
               "projects/bars/src/favicon.ico",
               "projects/bars/src/assets"
             ],
-            "styles": [
-              "projects/bars/src/styles.css"
-            ],
+            "styles": ["projects/bars/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -438,9 +418,7 @@
               "projects/bars/src/favicon.ico",
               "projects/bars/src/assets"
             ],
-            "styles": [
-              "projects/bars/src/styles.css"
-            ],
+            "styles": ["projects/bars/src/styles.css"],
             "scripts": []
           }
         },
@@ -452,9 +430,7 @@
               "projects/bars/tsconfig.spec.json",
               "projects/bars/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -491,9 +467,7 @@
               "projects/nugget/src/favicon.ico",
               "projects/nugget/src/assets"
             ],
-            "styles": [
-              "projects/nugget/src/styles.css"
-            ],
+            "styles": ["projects/nugget/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -555,9 +529,7 @@
               "projects/nugget/src/favicon.ico",
               "projects/nugget/src/assets"
             ],
-            "styles": [
-              "projects/nugget/src/styles.css"
-            ],
+            "styles": ["projects/nugget/src/styles.css"],
             "scripts": []
           }
         },
@@ -569,9 +541,7 @@
               "projects/nugget/tsconfig.spec.json",
               "projects/nugget/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -599,13 +569,13 @@
           "options": {
             "tsConfig": "projects/mrb-logging/tsconfig.lib.json",
             "project": "projects/mrb-logging/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/mrb-logging/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -621,9 +591,7 @@
               "projects/mrb-logging/tsconfig.lib.json",
               "projects/mrb-logging/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -652,9 +620,7 @@
               "projects/threejs/src/favicon.ico",
               "projects/threejs/src/assets"
             ],
-            "styles": [
-              "projects/threejs/src/styles.less"
-            ],
+            "styles": ["projects/threejs/src/styles.less"],
             "scripts": []
           },
           "configurations": {
@@ -717,9 +683,7 @@
               "projects/threejs/src/favicon.ico",
               "projects/threejs/src/assets"
             ],
-            "styles": [
-              "projects/threejs/src/styles.less"
-            ],
+            "styles": ["projects/threejs/src/styles.less"],
             "scripts": []
           }
         },
@@ -731,9 +695,7 @@
               "projects/threejs/tsconfig.spec.json",
               "projects/threejs/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
