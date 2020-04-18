@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:latest", "tslint-eslint-rules", "tslint-config-prettier"],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
   "rulesDirectory": ["node_modules/codelyzer"],
   "rules": {
     "arrow-return-shorthand": true,
