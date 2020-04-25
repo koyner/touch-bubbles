@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MatSliderChange} from '@angular/material/slider';
 
 import {BubbleService} from '../../service/bubble.service';
-import {ConstantsService} from '../../service/constants.service';
 import {GameService} from '../../service/game.service';
+
+import {ConstantsService} from 'mrb-ui';
 
 @Component({
   selector: 'app-status',

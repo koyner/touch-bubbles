@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import {Dist} from '../../model/dist';
-import {ConstantsService} from '../../service/constants.service';
 import {DistService} from '../../service/dist.service';
+
+import {ConstantsService} from 'mrb-ui';
 
 @Component({
   selector: 'app-bg-dist',

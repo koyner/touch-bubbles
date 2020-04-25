@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 
-import {ConstantsService} from './constants.service';
 import {DistService} from './dist.service';
 
 import {Bubble} from '../model/bubble';
 import {Dist} from '../model/dist';
+
+import {ConstantsService} from 'mrb-ui';
 
 @Injectable({
   providedIn: 'root',

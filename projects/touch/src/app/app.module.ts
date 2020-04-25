@@ -12,6 +12,8 @@ import {BubbleComponent} from './component/bubble/bubble.component';
 import {BubblesComponent} from './component/bubbles/bubbles.component';
 import {StatusComponent} from './component/status/status.component';
 
+import {ContainerModule} from 'mrb-ui';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,12 @@ import {StatusComponent} from './component/status/status.component';
     BubblesComponent,
     StatusComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, MatSliderModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    ContainerModule,
+  ],
   providers: [{provide: 'Window', useValue: window}],
   bootstrap: [AppComponent],
 })

@@ -1,13 +1,14 @@
-import {Inject, Injectable} from '@angular/core';
+import {Inject, Injectable, InjectionToken} from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+export const WINDOW = new InjectionToken('Window');
+
+/** @dynamic */
+@Injectable()
 export class ConstantsService {
   scale: number;
   speed = 0.002;
 
-  constructor(@Inject('Window') private window: Window) {
+  constructor(@Inject(WINDOW) private window: Window) {
     this.resize();
   }
 

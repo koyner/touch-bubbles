@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 import {Bubble} from '../../model/bubble';
-import {ConstantsService} from '../../service/constants.service';
+import {ConstantsService} from 'mrb-ui';
 
 @Component({
   selector: 'app-bubble',
