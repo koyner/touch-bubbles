@@ -60,6 +60,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 4200,
             "browserTarget": "minitest:build"
           },
           "configurations": {
@@ -171,6 +172,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 4201,
             "browserTarget": "touch:build"
           },
           "configurations": {
@@ -282,6 +284,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 4202,
             "browserTarget": "sierpinski:build"
           },
           "configurations": {
@@ -393,6 +396,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 4203,
             "browserTarget": "bars:build"
           },
           "configurations": {
@@ -504,6 +508,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 4204,
             "browserTarget": "nugget:build"
           },
           "configurations": {
@@ -554,44 +559,6 @@
             "production": {
               "devServerTarget": "nugget:serve:production"
             }
-          }
-        }
-      }
-    },
-    "mrb-logging": {
-      "projectType": "library",
-      "root": "projects/mrb-logging",
-      "sourceRoot": "projects/mrb-logging/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/mrb-logging/tsconfig.lib.json",
-            "project": "projects/mrb-logging/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/mrb-logging/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/mrb-logging/src/test.ts",
-            "tsConfig": "projects/mrb-logging/tsconfig.spec.json",
-            "karmaConfig": "projects/mrb-logging/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/mrb-logging/tsconfig.lib.json",
-              "projects/mrb-logging/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -658,6 +625,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "port": 4205,
             "browserTarget": "threejs:build"
           },
           "configurations": {
@@ -707,6 +675,287 @@
           "configurations": {
             "production": {
               "devServerTarget": "threejs:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "fungus": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      },
+      "root": "projects/fungus",
+      "sourceRoot": "projects/fungus/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/fungus",
+            "index": "projects/fungus/src/index.html",
+            "main": "projects/fungus/src/main.ts",
+            "polyfills": "projects/fungus/src/polyfills.ts",
+            "tsConfig": "projects/fungus/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/fungus/src/favicon.ico",
+              "projects/fungus/src/assets"
+            ],
+            "styles": [
+              "projects/fungus/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/fungus/src/environments/environment.ts",
+                  "with": "projects/fungus/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4206,
+            "browserTarget": "fungus:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fungus:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fungus:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/fungus/src/test.ts",
+            "polyfills": "projects/fungus/src/polyfills.ts",
+            "tsConfig": "projects/fungus/tsconfig.spec.json",
+            "karmaConfig": "projects/fungus/karma.conf.js",
+            "assets": [
+              "projects/fungus/src/favicon.ico",
+              "projects/fungus/src/assets"
+            ],
+            "styles": [
+              "projects/fungus/src/styles.less"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/fungus/tsconfig.app.json",
+              "projects/fungus/tsconfig.spec.json",
+              "projects/fungus/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/fungus/e2e/protractor.conf.js",
+            "devServerTarget": "fungus:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "fungus:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "mrb-logging": {
+      "projectType": "library",
+      "root": "projects/mrb-logging",
+      "sourceRoot": "projects/mrb-logging/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mrb-logging/tsconfig.lib.json",
+            "project": "projects/mrb-logging/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mrb-logging/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mrb-logging/src/test.ts",
+            "tsConfig": "projects/mrb-logging/tsconfig.spec.json",
+            "karmaConfig": "projects/mrb-logging/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mrb-logging/tsconfig.lib.json",
+              "projects/mrb-logging/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "mrb-ui": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      },
+      "root": "projects/mrb-ui",
+      "sourceRoot": "projects/mrb-ui/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mrb-ui",
+            "index": "projects/mrb-ui/src/index.html",
+            "main": "projects/mrb-ui/src/main.ts",
+            "polyfills": "projects/mrb-ui/src/polyfills.ts",
+            "tsConfig": "projects/mrb-ui/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/mrb-ui/src/favicon.ico",
+              "projects/mrb-ui/src/assets"
+            ],
+            "styles": [
+              "projects/mrb-ui/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mrb-ui/src/environments/environment.ts",
+                  "with": "projects/mrb-ui/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mrb-ui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mrb-ui:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mrb-ui:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mrb-ui/src/test.ts",
+            "polyfills": "projects/mrb-ui/src/polyfills.ts",
+            "tsConfig": "projects/mrb-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/mrb-ui/karma.conf.js",
+            "assets": [
+              "projects/mrb-ui/src/favicon.ico",
+              "projects/mrb-ui/src/assets"
+            ],
+            "styles": [
+              "projects/mrb-ui/src/styles.less"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mrb-ui/tsconfig.app.json",
+              "projects/mrb-ui/tsconfig.spec.json",
+              "projects/mrb-ui/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/mrb-ui/e2e/protractor.conf.js",
+            "devServerTarget": "mrb-ui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mrb-ui:serve:production"
             }
           }
         }

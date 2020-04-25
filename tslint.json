@@ -62,6 +62,6 @@
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "no-submodule-imports": false,
-    "no-implicit-dependencies": [true, "dev", ["mrb-logging"]]
+    "no-implicit-dependencies": [true, "dev", ["mrb-logging", "mrb-ui"]]
   }
 }
