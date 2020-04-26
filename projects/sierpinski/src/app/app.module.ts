@@ -8,15 +8,15 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {AnimateService} from './animate/animate.service';
-
-import {ContainerModule} from 'mrb-ui';
-
 import {AppComponent} from './app.component';
 import {DrawService} from './draw/draw.service';
 import {NodeComponent} from './node/node.component';
 import {SettingsComponent} from './settings/settings.component';
 import {SettingsService} from './settings/settings.service';
+
+import {ComponentsModule} from 'mrb-ui';
 
 @NgModule({
   imports: [
@@ -29,7 +29,7 @@ import {SettingsService} from './settings/settings.service';
     MatFormFieldModule,
     MatCardModule,
     MatRadioModule,
-    ContainerModule,
+    ComponentsModule,
   ],
   declarations: [AppComponent, NodeComponent, SettingsComponent],
   bootstrap: [AppComponent],
