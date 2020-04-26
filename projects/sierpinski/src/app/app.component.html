@@ -1,11 +1,13 @@
-<div #appNodes id="nodes" (window:resize)="resize()">
-  <app-node [level]="0" [pos]="0"></app-node>
-  <canvas
-    #appCanvas
-    [hidden]="!draw.isCanvasReady()"
-    [width]="settings.width"
-    [height]="settings.height"
-  ></canvas>
-</div>
+<app-mrb-ui-container (resized)="resize($event)">
+  <div id="nodes">
+    <app-node [level]="0" [pos]="0"></app-node>
+    <canvas
+      #appCanvas
+      [hidden]="!draw.isCanvasReady()"
+      [width]="settings.width"
+      [height]="settings.height"
+    ></canvas>
+  </div>
+</app-mrb-ui-container>
 
 <app-settings></app-settings>

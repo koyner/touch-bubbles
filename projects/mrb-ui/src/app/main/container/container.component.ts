@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ConstantsService} from './constants.service';
 
 @Component({
@@ -6,11 +6,22 @@ import {ConstantsService} from './constants.service';
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.less'],
 })
-export class ContainerComponent {
+export class ContainerComponent implements OnInit {
+  @Output() resized = new EventEmitter<number>();
+
   constructor(private constants: ConstantsService) {}
 
+  ngOnInit() {
+    this.resize();
+  }
+
   onResize() {
+    this.resize();
+  }
+
+  resize() {
     this.constants.resize();
+    this.resized.emit(this.side);
   }
 
   get left(): number {

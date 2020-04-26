@@ -10,6 +10,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AnimateService} from './animate/animate.service';
 
+import {ContainerModule} from 'mrb-ui';
+
 import {AppComponent} from './app.component';
 import {DrawService} from './draw/draw.service';
 import {NodeComponent} from './node/node.component';
@@ -27,6 +29,7 @@ import {SettingsService} from './settings/settings.service';
     MatFormFieldModule,
     MatCardModule,
     MatRadioModule,
+    ContainerModule,
   ],
   declarations: [AppComponent, NodeComponent, SettingsComponent],
   bootstrap: [AppComponent],

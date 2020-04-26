@@ -17,7 +17,6 @@ import {SettingsService} from './settings/settings.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('appCanvas') canvasRef: ElementRef;
-  @ViewChild('appNodes') nodesRef: ElementRef;
 
   constructor(
     private animate: AnimateService,
@@ -31,14 +30,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.draw.ctx = this.canvasRef.nativeElement.getContext('2d');
-    this.resize();
   }
 
-  resize() {
-    const box: ClientRect = this.nodesRef.nativeElement.getBoundingClientRect();
-    Promise.resolve().then(() => {
-      this.settings.width = box.width;
-      this.settings.height = box.height;
-    });
+  resize(side: number) {
+    this.settings.width = side;
+    this.settings.height = side;
   }
 }
